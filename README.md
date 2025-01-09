@@ -1,70 +1,136 @@
-# Getting Started with Create React App
+# SnapVault
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+SnapVault is a React-based web application for creating and managing a photo album. Users can upload photos to Firebase Storage, store metadata in Firestore, and view their photos in a beautifully organized gallery.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Photo Upload**: Easily upload your photos with a title and description.
+- **Photo Gallery**: View all uploaded photos in a visually appealing gallery.
+- **Firebase Integration**: Securely store photos in Firebase Storage and metadata in Firestore.
+- **Responsive Design**: Optimized for both desktop and mobile devices.
+- **Modern Styling**: Styled using Chakra UI for a sleek and consistent user interface.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Tech Stack
 
-### `npm test`
+- **Frontend**: ReactJS
+- **Styling**: Chakra UI
+- **Backend**: Firebase (Storage, Firestore)
+- **Routing**: React Router
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/snapvault.git
+   cd snapvault
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Set up Firebase:
+   - Go to [Firebase Console](https://console.firebase.google.com/).
+   - Create a new project.
+   - Enable Firebase Storage and Firestore.
+   - Copy your Firebase configuration.
+   - Replace the placeholders in `src/firebase-config.js` with your Firebase project credentials.
 
-### `npm run eject`
+4. Install Chakra UI:
+   ```bash
+   npm install @chakra-ui/react @emotion/react @emotion/styled framer-motion
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+5. Run the application:
+   ```bash
+   npm start
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Folder Structure
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+src/
+  components/
+    PhotoUpload.js    # Component for uploading photos
+    PhotoGallery.js   # Component for displaying photos
+  firebase-config.js  # Firebase configuration file
+  App.js              # Main app component
+  index.js            # Entry point
+```
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Usage
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. **Upload Photos**:
+   - Navigate to `/upload`.
+   - Select an image file, add a title, and upload it.
 
-### Code Splitting
+2. **View Photos**:
+   - Go to `/` to see your uploaded photos displayed in a grid layout.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## Firebase Rules (Development)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+For development purposes, you may use the following rules. Ensure to secure these rules for production:
 
-### Making a Progressive Web App
+**Firestore Rules:**
+```json
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /photos/{photoId} {
+      allow read, write: if true;
+    }
+  }
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+**Storage Rules:**
+```json
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /photos/{photoId} {
+      allow read, write: if true;
+    }
+  }
+}
+```
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Future Enhancements
 
-### Deployment
+- Add user authentication for personalized albums.
+- Implement photo categorization.
+- Enable search and filtering functionality.
+- Improve the UI/UX design with animations.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+## License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+---
+
+## Contribution
+
+Contributions are welcome! Feel free to open issues or submit pull requests.
+
+---
+
+## Author
+
+Bhairav K Sharma
