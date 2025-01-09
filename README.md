@@ -55,30 +55,8 @@ SnapVault is a React-based web application for creating and managing a photo alb
 
 ---
 
-## Folder Structure
-
-```
-src/
-  components/
-    PhotoUpload.js    # Component for uploading photos
-    PhotoGallery.js   # Component for displaying photos
-  firebase-config.js  # Firebase configuration file
-  App.js              # Main app component
-  index.js            # Entry point
-```
-
 ---
 
-## Usage
-
-1. **Upload Photos**:
-   - Navigate to `/upload`.
-   - Select an image file, add a title, and upload it.
-
-2. **View Photos**:
-   - Go to `/` to see your uploaded photos displayed in a grid layout.
-
----
 
 ## Firebase Rules (Development)
 
